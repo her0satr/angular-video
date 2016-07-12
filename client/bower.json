@@ -1,0 +1,19 @@
+{
+  "name": "client",
+  "main": "index.js",
+  "description": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.7",
+    "js-md5": "md5#^0.4.1",
+    "angular-mocks": "^1.5.7"
+  }
+}

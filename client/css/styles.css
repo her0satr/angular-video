@@ -1,0 +1,27 @@
+.cursor { cursor: pointer; }
+.header { margin: 0 0 15px 0; padding: 10px 0; background: #F5F5F5; border-bottom: 2px solid #CCCCCC; }
+
+@media only screen and (min-width: 970px) {
+    .page-video-list .col-md-3 .border {
+		min-height: 295px;
+    }
+}
+
+/* breadcrumb */
+.page-breadcrumb .padding { margin-bottom: 25px; }
+.page-breadcrumb .pull-right { text-align: right; }
+
+/* video list */
+.page-video-list .padding { display: table; width: 90%; margin: 0 auto; }
+.page-video-list .border { background: #F5F5F5; border: 2px solid #cccccc; padding: 10px; margin-bottom: 15px; }
+.page-video-list .cnt-video { padding: 10px 0 5px 0; }
+.page-video-list .cnt-rate { padding: 0 0 10px 0; }
+.page-video-list .cnt-rate img { width: 25px; }
+.page-video-list .cnt-desc { font-size: 80%; }
+
+/* video player */
+.page-video-play .padding { background: #F5F5F5; border: 2px solid #cccccc; padding: 10px; margin-bottom: 15px; }
+.page-video-play .cnt-video { padding: 10px 0; }
+.page-video-play .cnt-rate { padding: 0 0 10px 0; }
+.page-video-play .cnt-rate img { width: 25px; }
+.page-video-play .cnt-desc { font-size: 80%; }
