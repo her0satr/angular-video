@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<title>Crossover Video Portal</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+<div class="container">
+	<div class="col-md-12">
+		<div class="header">
+			<h2 class="text-center">Crossover Video Portal</h2>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+	
+	<div ng-controller="AppCtrl">
+		<div ng-show="page.breadcrumb" class="page-breadcrumb">
+			<div class="col-md-12 padding">
+				<div class="pull-right">
+					Hii {{users.username}}, <a class="cursor" ng-click="formSignOut()">Log out</a>
+				</div>
+				<div ng-show="page.video_play">
+					<a class="cursor" ng-click="videoBack()">&lt;&lt; Back Listing Video</a>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		
+		<div ng-show="page.video_list" class="page-video-list">
+			<div class="padding">
+				<div class="row">
+					<div class="col-md-3" ng-repeat="row in array_video" repeat-end="renderShortDesc()">
+						<div class="border">
+							<div class="text-center"><a class="cursor" ng-click="videoPlay(row)">{{row.name}}</a></div>
+							<div class="cnt-video">
+								<video width="100%">
+									<source ng-src="{{row.url}}" type="video/mp4">
+									Your browser does not support the video tag.
+								</video>
+							</div>
+							<div class="cnt-rate">
+								<img ng-src="{{1 <= row.rating_average ? 'images/star-yellow.png' : 'images/star.png'}}" />
+								<img ng-src="{{2 <= row.rating_average ? 'images/star-yellow.png' : 'images/star.png'}}" />
+								<img ng-src="{{3 <= row.rating_average ? 'images/star-yellow.png' : 'images/star.png'}}" />
+								<img ng-src="{{4 <= row.rating_average ? 'images/star-yellow.png' : 'images/star.png'}}" />
+								<img ng-src="{{5 <= row.rating_average ? 'images/star-yellow.png' : 'images/star.png'}}" />
+							</div>
+							<div class="cnt-desc">{{row.descriptionShort}}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div ng-show="page.video_list_info" class="text-center">All videos loaded.</div>
+		</div>
+		
+		<div ng-show="page.video_play" class="page-video-play">
+			<div class="col-md-9">
+				<div class="padding">
+					<div class="text-center">{{video.name}}</div>
+					<div class="cnt-video" id="videoContainer"></div>
+					<div class="cnt-rate">
+						<div class="pull-right">
+							Rate :
+							<select data-ng-options="o.id for o in rateOption" data-ng-model="selectOption"></select>
+							<button class="btn btn-xs btn-info" ng-click="updateRate(video)">Submit</button>
+						</div>
+						<img ng-src="{{1 <= video.rating_average ? 'images/star-yellow.png' : 'images/star.png'}}" />
+						<img ng-src="{{2 <= video.rating_average ? 'images/star-yellow.png' : 'images/star.png'}}" />
+						<img ng-src="{{3 <= video.rating_average ? 'images/star-yellow.png' : 'images/star.png'}}" />
+						<img ng-src="{{4 <= video.rating_average ? 'images/star-yellow.png' : 'images/star.png'}}" />
+						<img ng-src="{{5 <= video.rating_average ? 'images/star-yellow.png' : 'images/star.png'}}" />
+						{{video.ratings.length}} total rate
+					</div>
+					<div class="cnt-desc">{{video.description}}</div>
+				</div>
+			</div>
+			<div class="col-md-3 page-video-list">
+				<div class="border">
+					<div class="text-center">{{video.name}}</div>
+					<div class="cnt-video video-side"></div>
+					<div class="cnt-desc">{{video.descriptionShort}}</div>
+				</div>
+			</div>
+			<div class="col-md-3 page-video-list">
+				<div class="border">
+					<div class="text-center">{{video.name}}</div>
+					<div class="cnt-video video-side"></div>
+					<div class="cnt-desc">{{video.descriptionShort}}</div>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		
+		<div ng-show="page.signin">
+			<div class="col-md-12">
+				<form ng-submit="formSignIn()">
+					<div class="form-group">
+						<label>Username</label>
+						<input type="username" class="form-control" placeholder="Username" required ng-model="users.username" />
+					</div>
+					<div class="form-group">
+						<label for="exampleInputPassword1">Password</label>
+						<input type="password" class="form-control" placeholder="Password" required ng-model="users.password" />
+					</div>
+					<button type="submit" class="btn btn-primary">Submit</button> <code ng-hide="emptyFormInfo()">{{form_info}}</code>
+				</form>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+	
+	<script src="/bower_components/angular/angular.js"></script>
+	<script src="/bower_components/js-md5/src/md5.js"></script>
+	<script src="/js/index.js"></script>
+</div>
+</body>
+</html>
